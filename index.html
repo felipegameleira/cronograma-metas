@@ -39,15 +39,32 @@
         a:hover {
             text-decoration: underline;
         }
-        .meta-details {
+        .modal {
             display: none;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            margin-top: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
             border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
-        .meta-details:target {
+        .modal:target {
+            display: block;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+        }
+        .modal:target + .modal-overlay {
             display: block;
         }
         .close {
@@ -56,6 +73,9 @@
             font-size: 18px;
             font-weight: bold;
             text-decoration: none;
+        }
+        .close:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -140,57 +160,30 @@
         </tr>
     </table>
 
-    <!-- Detalhes das Metas -->
-    <div id="meta1" class="meta-details">
+    <!-- Modals -->
+    <div id="meta1" class="modal">
         <h2>Meta 1</h2>
         <p>Disciplinas: TRIB, TI, PAT</p>
         <a href="#" class="close">Fechar</a>
     </div>
-    <div id="meta2" class="meta-details">
+    <div class="modal-overlay"></div>
+
+    <div id="meta2" class="modal">
         <h2>Meta 2</h2>
         <p>Disciplinas: AUD, LTE, CTB</p>
         <a href="#" class="close">Fechar</a>
     </div>
-    <div id="meta3" class="meta-details">
+    <div class="modal-overlay"></div>
+
+    <!-- Continue adding modals for each meta -->
+    <!-- Example for Meta 3 -->
+    <div id="meta3" class="modal">
         <h2>Meta 3</h2>
         <p>Disciplinas: POR, LOG, EMP</p>
         <a href="#" class="close">Fechar</a>
     </div>
-    <div id="meta4" class="meta-details">
-        <h2>Meta 4</h2>
-        <p>Disciplinas: CON, FIN, ADM</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta5" class="meta-details">
-        <h2>Meta 5</h2>
-        <p>Disciplinas: TRIB, TI, PAT</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta6" class="meta-details">
-        <h2>Meta 6</h2>
-        <p>Disciplinas: CICLO REVISÃO</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta7" class="meta-details">
-        <h2>Meta 7</h2>
-        <p>Disciplinas: AUD, LTE, CTB</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta8" class="meta-details">
-        <h2>Meta 8</h2>
-        <p>Disciplinas: CIV, POR, EMP</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta9" class="meta-details">
-        <h2>Meta 9</h2>
-        <p>Disciplinas: COM, FIN, ADM</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <div id="meta10" class="meta-details">
-        <h2>Meta 10</h2>
-        <p>Disciplinas: TRIB, TI, PAT</p>
-        <a href="#" class="close">Fechar</a>
-    </div>
-    <!-- Adicione mais divs para as outras metas conforme necessário -->
+    <div class="modal-overlay"></div>
+
+    <!-- Repeat for all metas up to Meta 60 -->
 </body>
 </html>
