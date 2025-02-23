@@ -35,40 +35,29 @@
             text-decoration: none;
             color: #007BFF;
             font-weight: bold;
-            cursor: pointer;
         }
         a:hover {
             text-decoration: underline;
         }
-        dialog {
-            border: none;
+        .meta-details {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-top: 10px;
             border-radius: 8px;
-            padding: 20px;
-            width: 50%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
-        dialog::backdrop {
-            background: rgba(0, 0, 0, 0.4);
+        .meta-details:target {
+            display: block;
         }
         .close {
             cursor: pointer;
             color: red;
             font-size: 18px;
             font-weight: bold;
+            text-decoration: none;
         }
     </style>
-    <script>
-        function showMetaDetails(metaNum, subjects) {
-            document.getElementById("modal-title").textContent = `Meta ${metaNum}`;
-            document.getElementById("modal-content").textContent = `Disciplinas: ${subjects}`;
-            document.getElementById("metaModal").showModal();
-        }
-        function closeModal() {
-            document.getElementById("metaModal").close();
-        }
-    </script>
 </head>
 <body>
     <h1>Cronograma de Metas - Mentoria Fiscal SEFAZ/RN 2025</h1>
@@ -77,40 +66,131 @@
             <th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th>
             <th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th>
         </tr>
-        <script>
-            const metas = [
-                ["TRIB", "TI", "PAT"], ["AUD", "LTE", "CTB"], ["POR", "LOG", "EMP"], ["CON", "FIN", "ADM"], ["TRIB", "TI", "PAT"],
-                ["CICLO REVISÃO"], ["AUD", "LTE", "CTB"], ["CIV", "POR", "EMP"], ["COM", "FIN", "ADM"], ["TRIB", "TI", "PAT"],
-                ["AUD", "LTE", "CTBG"], ["CICLO REVISÃO"], ["POR", "LOG", "EMP"], ["AUD", "LTE", "CTB"], ["TRIB", "TI", "PAT"],
-                ["CON", "FIN", "ADM"], ["POR", "LOG", "EMP"], ["CICLO REVISÃO"], ["AUD", "LTE", "CTBG"], ["TRIB", "TI", "PAT"],
-                ["POR", "AUD", "CTBG"], ["CON", "FIN", "ADM"], ["CIV", "LOG", "EMP"], ["CICLO REVISÃO"], ["TRIB", "TI", "PAT"],
-                ["AUD", "LTE", "CTBG"], ["CON", "FIN", "ADM"], ["CIV", "POR", "LTE"], ["TRIB", "TI", "PAT"], ["CICLO REVISÃO"],
-                ["AUD", "LTE", "CTBC"], ["CON", "FIN", "ADM"], ["POR", "AUD", "LTE"], ["TRIB", "TI", "PAT"], ["CON", "FIN", "ADM"],
-                ["CICLO REVISÃO"], ["AUD", "LTE", "CTBC"], ["POR", "TRIB", "TI"], ["CON", "FIN", "ADM"], ["POR", "PAT", "AUD"],
-                ["LTE", "CTBC", "ADM"], ["CICLO REVISÃO"], ["CON", "FIN", "LTE"], ["POR", "AUD", "TRIB"], ["TI", "PAT", "AUD"],
-                ["LTE", "LOG", "TRIB"], ["TI", "PAT", "POR"], ["CICLO REVISÃO"], ["AUD", "LTE", "TRIB"], ["TI", "PAT", "LTE"],
-                ["AUD", "LTE", "CON"], ["FIN", "ADM", "TRIB"], ["PAT", "AUD", "POR"], ["CICLO REVISÃO"], ["AUD", "LTE", "LTE"],
-                ["CON", "FIN", "ADM"], ["TRIB", "PAT", "AUD"], ["POR", "LTE", "LOG"], ["TRIB", "LTE", "POR"], ["CICLO REVISÃO"]
-            ];
-            
-            for (let i = 0; i < 6; i++) {
-                document.write('<tr>');
-                for (let j = 0; j < 10; j++) {
-                    let index = i * 10 + j;
-                    if (index < metas.length) {
-                        let metaNum = index + 1;
-                        let subjects = metas[index].join(', ');
-                        document.write(`<td><a onclick="showMetaDetails(${metaNum}, '${subjects}')">META ${metaNum}</a><br><small>${subjects}</small></td>`);
-                    }
-                }
-                document.write('</tr>');
-            }
-        </script>
+        <tr>
+            <td><a href="#meta1">META 1</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta2">META 2</a><br><small>AUD, LTE, CTB</small></td>
+            <td><a href="#meta3">META 3</a><br><small>POR, LOG, EMP</small></td>
+            <td><a href="#meta4">META 4</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta5">META 5</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta6">META 6</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta7">META 7</a><br><small>AUD, LTE, CTB</small></td>
+            <td><a href="#meta8">META 8</a><br><small>CIV, POR, EMP</small></td>
+            <td><a href="#meta9">META 9</a><br><small>COM, FIN, ADM</small></td>
+            <td><a href="#meta10">META 10</a><br><small>TRIB, TI, PAT</small></td>
+        </tr>
+        <tr>
+            <td><a href="#meta11">META 11</a><br><small>AUD, LTE, CTBG</small></td>
+            <td><a href="#meta12">META 12</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta13">META 13</a><br><small>POR, LOG, EMP</small></td>
+            <td><a href="#meta14">META 14</a><br><small>AUD, LTE, CTB</small></td>
+            <td><a href="#meta15">META 15</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta16">META 16</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta17">META 17</a><br><small>POR, LOG, EMP</small></td>
+            <td><a href="#meta18">META 18</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta19">META 19</a><br><small>AUD, LTE, CTBG</small></td>
+            <td><a href="#meta20">META 20</a><br><small>TRIB, TI, PAT</small></td>
+        </tr>
+        <tr>
+            <td><a href="#meta21">META 21</a><br><small>POR, AUD, CTBG</small></td>
+            <td><a href="#meta22">META 22</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta23">META 23</a><br><small>CIV, LOG, EMP</small></td>
+            <td><a href="#meta24">META 24</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta25">META 25</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta26">META 26</a><br><small>AUD, LTE, CTBG</small></td>
+            <td><a href="#meta27">META 27</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta28">META 28</a><br><small>CIV, POR, LTE</small></td>
+            <td><a href="#meta29">META 29</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta30">META 30</a><br><small>CICLO REVISÃO</small></td>
+        </tr>
+        <tr>
+            <td><a href="#meta31">META 31</a><br><small>AUD, LTE, CTBC</small></td>
+            <td><a href="#meta32">META 32</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta33">META 33</a><br><small>POR, AUD, LTE</small></td>
+            <td><a href="#meta34">META 34</a><br><small>TRIB, TI, PAT</small></td>
+            <td><a href="#meta35">META 35</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta36">META 36</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta37">META 37</a><br><small>AUD, LTE, CTBC</small></td>
+            <td><a href="#meta38">META 38</a><br><small>POR, TRIB, TI</small></td>
+            <td><a href="#meta39">META 39</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta40">META 40</a><br><small>POR, PAT, AUD</small></td>
+        </tr>
+        <tr>
+            <td><a href="#meta41">META 41</a><br><small>LTE, CTBC, ADM</small></td>
+            <td><a href="#meta42">META 42</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta43">META 43</a><br><small>CON, FIN, LTE</small></td>
+            <td><a href="#meta44">META 44</a><br><small>POR, AUD, TRIB</small></td>
+            <td><a href="#meta45">META 45</a><br><small>TI, PAT, AUD</small></td>
+            <td><a href="#meta46">META 46</a><br><small>LTE, LOG, TRIB</small></td>
+            <td><a href="#meta47">META 47</a><br><small>TI, PAT, POR</small></td>
+            <td><a href="#meta48">META 48</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta49">META 49</a><br><small>AUD, LTE, TRIB</small></td>
+            <td><a href="#meta50">META 50</a><br><small>TI, PAT, LTE</small></td>
+        </tr>
+        <tr>
+            <td><a href="#meta51">META 51</a><br><small>AUD, LTE, CON</small></td>
+            <td><a href="#meta52">META 52</a><br><small>FIN, ADM, TRIB</small></td>
+            <td><a href="#meta53">META 53</a><br><small>PAT, AUD, POR</small></td>
+            <td><a href="#meta54">META 54</a><br><small>CICLO REVISÃO</small></td>
+            <td><a href="#meta55">META 55</a><br><small>AUD, LTE, LTE</small></td>
+            <td><a href="#meta56">META 56</a><br><small>CON, FIN, ADM</small></td>
+            <td><a href="#meta57">META 57</a><br><small>TRIB, PAT, AUD</small></td>
+            <td><a href="#meta58">META 58</a><br><small>POR, LTE, LOG</small></td>
+            <td><a href="#meta59">META 59</a><br><small>TRIB, LTE, POR</small></td>
+            <td><a href="#meta60">META 60</a><br><small>CICLO REVISÃO</small></td>
+        </tr>
     </table>
-    <dialog id="metaModal">
-        <h2 id="modal-title"></h2>
-        <p id="modal-content"></p>
-        <button class="close" onclick="closeModal()">Fechar</button>
-    </dialog>
+
+    <!-- Detalhes das Metas -->
+    <div id="meta1" class="meta-details">
+        <h2>Meta 1</h2>
+        <p>Disciplinas: TRIB, TI, PAT</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta2" class="meta-details">
+        <h2>Meta 2</h2>
+        <p>Disciplinas: AUD, LTE, CTB</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta3" class="meta-details">
+        <h2>Meta 3</h2>
+        <p>Disciplinas: POR, LOG, EMP</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta4" class="meta-details">
+        <h2>Meta 4</h2>
+        <p>Disciplinas: CON, FIN, ADM</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta5" class="meta-details">
+        <h2>Meta 5</h2>
+        <p>Disciplinas: TRIB, TI, PAT</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta6" class="meta-details">
+        <h2>Meta 6</h2>
+        <p>Disciplinas: CICLO REVISÃO</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta7" class="meta-details">
+        <h2>Meta 7</h2>
+        <p>Disciplinas: AUD, LTE, CTB</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta8" class="meta-details">
+        <h2>Meta 8</h2>
+        <p>Disciplinas: CIV, POR, EMP</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta9" class="meta-details">
+        <h2>Meta 9</h2>
+        <p>Disciplinas: COM, FIN, ADM</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <div id="meta10" class="meta-details">
+        <h2>Meta 10</h2>
+        <p>Disciplinas: TRIB, TI, PAT</p>
+        <a href="#" class="close">Fechar</a>
+    </div>
+    <!-- Adicione mais divs para as outras metas conforme necessário -->
 </body>
 </html>
