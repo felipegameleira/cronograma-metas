@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Metas - Mentoria Fiscal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        dialog {
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            width: 50%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .close {
+            cursor: pointer;
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function showMetaDetails(metaNum, subjects) {
+            document.getElementById("modal-title").textContent = `Meta ${metaNum}`;
+            document.getElementById("modal-content").textContent = `Disciplinas: ${subjects}`;
+            document.getElementById("metaModal").showModal();
+        }
+        function closeModal() {
+            document.getElementById("metaModal").close();
+        }
+    </script>
+</head>
+<body>
+    <h1>Cronograma de Metas - Mentoria Fiscal SEFAZ/RN 2025</h1>
+    <table>
+        <tr>
+            <th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th>
+            <th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th><th>Meta</th>
+        </tr>
+        <script>
+            const metas = [
+                ["TRIB", "TI", "PAT"], ["AUD", "LTE", "CTB"], ["POR", "LOG", "EMP"], ["CON", "FIN", "ADM"], ["TRIB", "TI", "PAT"],
+                ["CICLO REVISÃO"], ["AUD", "LTE", "CTB"], ["CIV", "POR", "EMP"], ["COM", "FIN", "ADM"], ["TRIB", "TI", "PAT"],
+                ["AUD", "LTE", "CTBG"], ["CICLO REVISÃO"], ["POR", "LOG", "EMP"], ["AUD", "LTE", "CTB"], ["TRIB", "TI", "PAT"],
+                ["CON", "FIN", "ADM"], ["POR", "LOG", "EMP"], ["CICLO REVISÃO"], ["AUD", "LTE", "CTBG"], ["TRIB", "TI", "PAT"],
+                ["POR", "AUD", "CTBG"], ["CON", "FIN", "ADM"], ["CIV", "LOG", "EMP"], ["CICLO REVISÃO"], ["TRIB", "TI", "PAT"],
+                ["AUD", "LTE", "CTBG"], ["CON", "FIN", "ADM"], ["CIV", "POR", "LTE"], ["TRIB", "TI", "PAT"], ["CICLO REVISÃO"],
+                ["AUD", "LTE", "CTBC"], ["CON", "FIN", "ADM"], ["POR", "AUD", "LTE"], ["TRIB", "TI", "PAT"], ["CON", "FIN", "ADM"],
+                ["CICLO REVISÃO"], ["AUD", "LTE", "CTBC"], ["POR", "TRIB", "TI"], ["CON", "FIN", "ADM"], ["POR", "PAT", "AUD"],
+                ["LTE", "CTBC", "ADM"], ["CICLO REVISÃO"], ["CON", "FIN", "LTE"], ["POR", "AUD", "TRIB"], ["TI", "PAT", "AUD"],
+                ["LTE", "LOG", "TRIB"], ["TI", "PAT", "POR"], ["CICLO REVISÃO"], ["AUD", "LTE", "TRIB"], ["TI", "PAT", "LTE"],
+                ["AUD", "LTE", "CON"], ["FIN", "ADM", "TRIB"], ["PAT", "AUD", "POR"], ["CICLO REVISÃO"], ["AUD", "LTE", "LTE"],
+                ["CON", "FIN", "ADM"], ["TRIB", "PAT", "AUD"], ["POR", "LTE", "LOG"], ["TRIB", "LTE", "POR"], ["CICLO REVISÃO"]
+            ];
+            
+            for (let i = 0; i < 6; i++) {
+                document.write('<tr>');
+                for (let j = 0; j < 10; j++) {
+                    let index = i * 10 + j;
+                    if (index < metas.length) {
+                        let metaNum = index + 1;
+                        let subjects = metas[index].join(', ');
+                        document.write(`<td><a onclick="showMetaDetails(${metaNum}, '${subjects}')">META ${metaNum}</a><br><small>${subjects}</small></td>`);
+                    }
+                }
+                document.write('</tr>');
+            }
+        </script>
+    </table>
+    <dialog id="metaModal">
+        <h2 id="modal-title"></h2>
+        <p id="modal-content"></p>
+        <button class="close" onclick="closeModal()">Fechar</button>
+    </dialog>
+</body>
+</html>
